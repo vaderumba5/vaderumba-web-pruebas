@@ -1,6 +1,42 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
 import { collection, getFirestore, onSnapshot, orderBy, query, Timestamp, where } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
+const mobileFixes=document.createElement('style');
+mobileFixes.textContent=`
+.header{background:transparent!important;border-bottom:0!important;backdrop-filter:none!important;box-shadow:none!important}
+.header.scrolled{background:rgba(8,8,8,.92)!important;border-bottom:1px solid rgba(255,255,255,.12)!important;backdrop-filter:blur(16px)!important;box-shadow:0 8px 28px rgba(0,0,0,.18)!important}
+.logo-name{display:none!important}
+.logo{overflow:hidden;border-radius:12px}
+.logo img{width:58px!important;height:52px!important;object-fit:cover!important;object-position:center!important;transform:scale(1.18);transform-origin:center}
+@media(max-width:680px){
+  .header{height:62px!important;padding-top:env(safe-area-inset-top)}
+  .header-inner{width:calc(100% - 22px)!important}
+  .logo{width:56px;height:50px}
+  .logo img{width:58px!important;height:52px!important;transform:scale(1.22)}
+  .menu-btn{margin-left:auto}
+  .hero{position:relative!important;height:430px!important;min-height:430px!important;max-height:430px!important;overflow:hidden!important;background:#090909!important;padding:0!important}
+  .hero-media{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;aspect-ratio:auto!important;background-image:linear-gradient(180deg,rgba(0,0,0,.02) 0%,rgba(0,0,0,.04) 31%,rgba(9,9,9,.28) 43%,rgba(9,9,9,.76) 56%,#090909 76%),url('portada.jpeg')!important;background-size:100% auto!important;background-position:center top!important;background-repeat:no-repeat!important}
+  .hero-content{position:absolute!important;z-index:2!important;left:16px!important;right:16px!important;top:142px!important;bottom:auto!important;transform:none!important;width:auto!important;margin:0!important;padding:0!important}
+  .hero-title{font-size:48px!important;line-height:.82!important;letter-spacing:.005em!important;margin:0 0 12px!important;max-width:210px!important;text-shadow:0 4px 24px rgba(0,0,0,.72)!important}
+  .hero-bottom{display:block!important;border-top:1px solid rgba(255,255,255,.34)!important;padding-top:10px!important}
+  .hero-copy{font-size:15px!important;line-height:1.35!important;margin:0 0 14px!important;text-shadow:0 2px 12px rgba(0,0,0,.78)!important}
+  .hero-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%!important}
+  .hero-actions .btn{min-width:0!important;min-height:44px!important;padding:0 8px!important;font-size:10px!important}
+  h2,.statement h2,.band h2{font-size:44px!important;line-height:.93!important;letter-spacing:0!important}
+  .section{padding:58px 0!important}
+  .statement-grid,.band-intro,.booking-grid{gap:22px!important}
+  .section-head{gap:15px!important;margin-bottom:26px!important}
+}
+@media(max-width:390px){
+  .hero{height:412px!important;min-height:412px!important;max-height:412px!important}
+  .hero-content{top:132px!important;left:14px!important;right:14px!important}
+  .hero-title{font-size:44px!important;max-width:190px!important}
+  .hero-copy{font-size:14px!important}
+  h2,.statement h2,.band h2{font-size:40px!important}
+}
+`;
+document.head.appendChild(mobileFixes);
+
 const firebaseConfig={apiKey:"AIzaSyC0DrWRG4JLWHSX2vk5zat6eVxxKs8GfvY",authDomain:"va-de-rumba.firebaseapp.com",projectId:"va-de-rumba",storageBucket:"va-de-rumba.firebasestorage.app",messagingSenderId:"353945851143",appId:"1:353945851143:web:7c27b29224e687476c21a2",measurementId:"G-0DXD34H6CZ"};
 const db=getFirestore(initializeApp(firebaseConfig));
 const dates=document.getElementById('fechas');
