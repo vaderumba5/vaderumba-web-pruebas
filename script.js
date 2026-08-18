@@ -7,7 +7,7 @@ fixes.textContent=`
 .header.scrolled{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:none!important}
 .logo-name{display:none!important}
 .logo{overflow:hidden!important;border-radius:12px!important}
-.logo img,.footer-logo img{content:url('https://raw.githubusercontent.com/vaderumba5/va_de_rumba_app/main/assets/images/va_de_rumba_logo.png')!important;object-fit:cover!important;object-position:center!important;transform:scale(1.18)!important;transform-origin:center!important}
+.logo img,.footer-logo img{content:url('vr-logo-dorado.svg')!important;object-fit:contain!important;object-position:center!important;transform:none!important;transform-origin:center!important}
 .hero{position:relative!important;overflow:hidden!important;background:#090909!important}
 .hero-media{position:absolute!important;inset:0!important;background-image:linear-gradient(180deg,rgba(0,0,0,.12) 0%,rgba(0,0,0,.05) 28%,rgba(0,0,0,.40) 64%,rgba(0,0,0,.94) 100%),linear-gradient(90deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,.08) 40%,rgba(0,0,0,.22) 100%),url('portada.jpeg')!important;background-size:cover!important;background-position:center 26%!important;background-repeat:no-repeat!important}
 .hero-content{position:absolute!important;z-index:2!important}
@@ -18,7 +18,8 @@ fixes.textContent=`
   .header{height:62px!important;padding-top:env(safe-area-inset-top)!important}
   .header-inner{width:calc(100% - 22px)!important}
   .logo{width:58px!important;height:50px!important}
-  .logo img{width:60px!important;height:52px!important;transform:scale(1.22)!important}
+  .logo img{width:58px!important;height:50px!important;object-fit:contain!important}
+  .footer-logo img{width:82px!important;height:auto!important;object-fit:contain!important}
   .menu-btn{margin-left:auto!important}
   .hero{height:620px!important;min-height:620px!important;max-height:620px!important;padding:0!important;overflow:hidden!important}
   .hero-media{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;background-position:center 22%!important}
