@@ -1,12 +1,20 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
 import { collection, getFirestore, onSnapshot, orderBy, query, Timestamp, where } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
+const ASSET_VERSION='20260818-2307';
 const header=document.getElementById('header');
 function updateHeader(){header?.classList.toggle('scrolled',window.scrollY>70)}
 updateHeader();
 window.addEventListener('scroll',updateHeader,{passive:true});
 
-document.querySelectorAll('.logo img,.footer-logo img').forEach(img=>{img.src='vr-logo-dorado.png';img.removeAttribute('srcset');});
+document.querySelectorAll('.logo img,.footer-logo img').forEach(img=>{img.src=`vr-logo-dorado.png?v=${ASSET_VERSION}`;img.removeAttribute('srcset');});
+
+const style=document.createElement('style');
+style.textContent=`
+.hero-media{background-image:linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.02) 42%,rgba(0,0,0,.86) 100%),linear-gradient(90deg,rgba(0,0,0,.6),rgba(0,0,0,.15) 44%,transparent 68%),url('portada.jpeg?v=${ASSET_VERSION}')!important}
+@media(max-width:680px){.hero-media{background-image:linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.03) 34%,rgba(0,0,0,.22) 56%,rgba(0,0,0,.88) 100%),url('portada.jpeg?v=${ASSET_VERSION}')!important}}
+`;
+document.head.appendChild(style);
 
 const firebaseConfig={apiKey:"AIzaSyC0DrWRG4JLWHSX2vk5zat6eVxxKs8GfvY",authDomain:"va-de-rumba.firebaseapp.com",projectId:"va-de-rumba",storageBucket:"va-de-rumba.firebasestorage.app",messagingSenderId:"353945851143",appId:"1:353945851143:web:7c27b29224e687476c21a2",measurementId:"G-0DXD34H6CZ"};
 const db=getFirestore(initializeApp(firebaseConfig));
