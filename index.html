@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <title>Va de Rumba</title>
+  <meta name="description" content="Va de Rumba · Rumba, flamenco-pop y música en directo desde Valencia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f2eee9;--ink:#111;--muted:#6f6a64;--paper:#fff;--line:rgba(17,17,17,.14);--accent:#c66c36;--nav:rgba(15,15,15,.82)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:Montserrat,Arial,sans-serif} a{color:inherit}
+    .nav{position:fixed;inset:0 0 auto 0;height:66px;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,4vw,58px);background:linear-gradient(to bottom,rgba(0,0,0,.58),transparent);transition:.25s}
+    .nav.scrolled{background:var(--nav);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(255,255,255,.08)}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:"Bebas Neue",sans-serif;font-size:1.35rem;letter-spacing:.12em}.brand-mark{width:11px;height:11px;border-radius:50%;background:#fff}
+    .menu{display:flex;gap:26px;align-items:center}.menu a{text-decoration:none;color:#fff;text-transform:uppercase;font-size:.74rem;font-weight:700;letter-spacing:.13em;opacity:.9}.menu a:hover{opacity:1}
+    .hamb{display:none;border:0;background:transparent;color:#fff;font-size:1.55rem;cursor:pointer}
+    .hero{position:relative;height:min(79vh,760px);min-height:570px;overflow:hidden;background:#2b241f}
+    .hero-bg{position:absolute;inset:0;background:url('assets/portada.jpg') center 42%/cover no-repeat;transform:scale(1.002)}
+    .hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.05) 10%,rgba(0,0,0,.04) 48%,rgba(0,0,0,.62) 100%)}
+    .hero-content{position:absolute;z-index:2;left:clamp(20px,6vw,92px);right:clamp(20px,6vw,92px);bottom:clamp(22px,4.5vh,46px);color:#fff;display:flex;align-items:flex-end;justify-content:space-between;gap:32px}
+    .hero-copy{max-width:760px}.kicker{margin:0 0 4px;font-family:"Bebas Neue",sans-serif;font-size:clamp(1.05rem,1.8vw,1.45rem);letter-spacing:.18em}.title{margin:0;line-height:.78;font-family:"Bebas Neue",sans-serif;text-transform:uppercase;font-size:clamp(4.7rem,10vw,9.5rem);letter-spacing:.015em}.title small{display:block;font-size:.34em;letter-spacing:.23em;margin-bottom:.08em;padding-bottom:.19em;border-bottom:1px solid rgba(255,255,255,.7);width:max-content}
+    .tagline{margin:20px 0 0;font-size:clamp(.92rem,1.5vw,1.12rem);font-weight:600;letter-spacing:.05em}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.btn{min-width:128px;border:1px solid rgba(255,255,255,.85);padding:13px 19px;text-decoration:none;color:#fff;text-align:center;text-transform:uppercase;font-size:.72rem;font-weight:700;letter-spacing:.12em;transition:.2s}.btn:hover{background:#fff;color:#111}.btn.fill{background:#fff;color:#111}.btn.fill:hover{background:transparent;color:#fff}
+    section{padding:clamp(70px,9vw,118px) clamp(20px,6vw,92px)}.section-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:44px}.eyebrow{text-transform:uppercase;font-size:.7rem;letter-spacing:.18em;font-weight:700;color:var(--muted)} h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(3.2rem,7vw,6.8rem);line-height:.86;margin:8px 0 0;font-weight:400}.section-note{max-width:390px;color:var(--muted);line-height:1.7;font-size:.92rem}
+    #conciertos{background:#f7f4f0}.concerts{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}.concerts li{border-bottom:1px solid var(--line)}.evento{display:grid;grid-template-columns:minmax(180px,.7fr) 1.8fr auto;gap:24px;align-items:center;padding:25px 0}.dia{font-family:"Bebas Neue",sans-serif;font-size:2rem;letter-spacing:.035em}.detalle{font-size:.94rem;color:#383531}.boton-entrada,.entrada-gratis{display:inline-block;padding:10px 14px;border:1px solid #111;text-decoration:none;text-transform:uppercase;font-weight:700;font-size:.68rem;letter-spacing:.08em}.entrada-gratis{background:#111;color:#fff}
+    #multimedia{background:#111;color:#fff}.media-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:22px}.video-card,.spotify-card{background:#191919;border:1px solid rgba(255,255,255,.1);overflow:hidden}.video-wrap{position:relative;padding-top:56.25%}.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.spotify-card{min-height:100%;display:flex;align-items:stretch}.spotify-card iframe{width:100%;min-height:352px;border:0}.dark-note{color:#b7b7b7}
+    #nosotros{background:#e7dfd6}.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(38px,7vw,110px);align-items:start}.about-copy{font-size:clamp(1.05rem,1.8vw,1.3rem);line-height:1.8;max-width:760px}.members{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line)}.member{padding:20px 0;border-bottom:1px solid var(--line)}.member:nth-child(odd){padding-right:18px}.member:nth-child(even){padding-left:18px;border-left:1px solid var(--line)}.member strong{display:block;font-family:"Bebas Neue",sans-serif;font-size:2rem;font-weight:400}.member span{color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.1em}
+    #redes{background:#fff}.socials{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.social{padding:26px 2px;border-bottom:1px solid var(--line);text-decoration:none;font-family:"Bebas Neue",sans-serif;font-size:clamp(2.4rem,5vw,5.2rem);display:flex;justify-content:space-between;align-items:center;transition:.2s}.social:not(:last-child){border-right:1px solid var(--line);padding-right:24px}.social:not(:first-child){padding-left:24px}.social:hover{padding-left:14px}.social span{font-family:Montserrat,sans-serif;font-size:1rem}
+    #contacto{background:#c5ad99}.contact-wrap{display:grid;grid-template-columns:1fr .9fr;gap:60px}.contact-title{font-size:clamp(4rem,8vw,8rem);margin:0}.contact-copy{align-self:end;max-width:540px;line-height:1.7}.contact-link{display:inline-block;margin-top:24px;padding-bottom:5px;border-bottom:1px solid #111;text-decoration:none;font-weight:700}
+    footer{background:#111;color:#aaa;padding:24px clamp(20px,6vw,92px);display:flex;justify-content:space-between;gap:20px;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+    @media(max-width:900px){.menu{display:none;position:absolute;top:66px;left:0;right:0;background:#111;padding:24px;flex-direction:column;align-items:flex-start}.menu.open{display:flex}.hamb{display:block}.hero{height:72vh;min-height:580px}.hero-content{display:block}.hero-actions{justify-content:flex-start;margin-top:22px}.media-grid,.about-grid,.contact-wrap{grid-template-columns:1fr}.evento{grid-template-columns:1fr;gap:8px}.section-head{display:block}.section-note{margin-top:18px}.socials{grid-template-columns:1fr}.social:not(:last-child){border-right:0}.social:not(:first-child),.social:not(:last-child){padding-left:2px;padding-right:2px}}
+    @media(max-width:580px){.hero{height:78vh;min-height:600px}.hero-bg{background-position:center 40%}.title{font-size:clamp(4.2rem,23vw,6.8rem)}.title small{font-size:.32em}.hero-content{bottom:22px}.tagline{margin-top:16px}.btn{padding:11px 15px;min-width:116px}.members{grid-template-columns:1fr}.member:nth-child(even){padding-left:0;border-left:0}.member:nth-child(odd){padding-right:0}section{padding-left:20px;padding-right:20px}footer{display:block;line-height:1.9}}
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <a class="brand" href="#inicio"><span class="brand-mark"></span>VA DE RUMBA</a>
+    <button class="hamb" id="hamb" aria-label="Abrir menú">☰</button>
+    <div class="menu" id="menu">
+      <a href="#conciertos">Conciertos</a><a href="#multimedia">Multimedia</a><a href="#nosotros">Nosotros</a><a href="#redes">Redes</a><a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="inicio">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-copy">
+        <h1 class="title"><small>VA DE</small>RUMBA</h1>
+        <p class="tagline">Los domingos no se sale.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="btn fill" href="#multimedia">Escuchar</a>
+        <a class="btn" href="#multimedia">YouTube</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="conciertos">
+      <div class="section-head"><div><div class="eyebrow">En directo</div><h2>Conciertos 2026</h2></div><p class="section-note">Próximas fechas de Va de Rumba. Los conciertos publicados desde la app se cargan aquí automáticamente.</p></div>
+      <ul class="concerts" id="concerts-list" aria-busy="true"><li><div class="evento"><div class="detalle">Cargando conciertos…</div></div></li></ul>
+    </section>
+
+    <section id="multimedia">
+      <div class="section-head"><div><div class="eyebrow" style="color:#aaa">Música</div><h2>Escucha · Mira</h2></div><p class="section-note dark-note">Rumba, flamenco-pop y canciones para cantarlas en directo.</p></div>
+      <div class="media-grid">
+        <div class="video-card"><div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/Vmlj_QEqkoo" title="Va de Rumba - Corazón sin alma" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
+        <div class="spotify-card"><iframe src="https://open.spotify.com/embed/artist/4zO0WYWJsHSNYbzO9lcLYp?utm_source=generator" title="Va de Rumba en Spotify" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="about-grid">
+        <div><div class="eyebrow">La banda</div><h2>Nosotros</h2></div>
+        <div><p class="about-copy">Somos Va de Rumba, cinco colegas con ganas de montar la fiesta allá donde vayamos. Mezclamos rumba y pop-rock para que no puedas quedarte quieto. Hacemos música para disfrutar, cantar a gritos y pasarlo en grande.</p>
+          <div class="members"><div class="member"><strong>Toni</strong><span>Voz y guitarra</span></div><div class="member"><strong>Alejandro</strong><span>Voz</span></div><div class="member"><strong>Jose</strong><span>Voz</span></div><div class="member"><strong>Rubén</strong><span>Percusión</span></div><div class="member"><strong>Rafa</strong><span>Bajo</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="redes">
+      <div class="section-head"><div><div class="eyebrow">Síguenos</div><h2>Redes</h2></div></div>
+      <div class="socials">
+        <a class="social" href="https://www.instagram.com/vaderumba5/" target="_blank" rel="noopener">Instagram <span>↗</span></a>
+        <a class="social" href="https://www.tiktok.com/@vaderumba" target="_blank" rel="noopener">TikTok <span>↗</span></a>
+        <a class="social" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook <span>↗</span></a>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="contact-wrap"><h2 class="contact-title">Que empiece la fiesta.</h2><div class="contact-copy"><p>Contratación, eventos, bodas y conciertos. Cuéntanos qué tienes en mente y hablamos.</p><a class="contact-link" href="mailto:contacto@vaderumba.es">contacto@vaderumba.es →</a></div></div>
+    </section>
+  </main>
+
+  <footer><span>© 2026 Va de Rumba</span><span>Valencia · España</span></footer>
+  <script type="module" src="script.js"></script>
+  <script>
+    const nav=document.getElementById('nav'),hamb=document.getElementById('hamb'),menu=document.getElementById('menu');
+    addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+    hamb.addEventListener('click',()=>menu.classList.toggle('open'));
+    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+  </script>
+</body>
+</html>
