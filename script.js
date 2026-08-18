@@ -1,13 +1,13 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
 import { collection, getFirestore, onSnapshot, orderBy, query, Timestamp, where } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
-const ASSET_VERSION='20260818-2307';
+const ASSET_VERSION='20260818-2310';
 const header=document.getElementById('header');
 function updateHeader(){header?.classList.toggle('scrolled',window.scrollY>70)}
 updateHeader();
 window.addEventListener('scroll',updateHeader,{passive:true});
 
-document.querySelectorAll('.logo img,.footer-logo img').forEach(img=>{img.src=`vr-logo-dorado.png?v=${ASSET_VERSION}`;img.removeAttribute('srcset');});
+document.querySelectorAll('.logo img,.footer-logo img').forEach(img=>{img.src=`vr-logo-dorado.svg?v=${ASSET_VERSION}`;img.removeAttribute('srcset');});
 
 const style=document.createElement('style');
 style.textContent=`
